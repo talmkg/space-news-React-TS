@@ -1,25 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import CustomNavbar from "./components/CustomNavbar";
+import Gallery from "./components/Gallery";
+import Article from "./components/Article";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      {/* BrowserRouter adds router logic */}
+      <div className="App">
+        <CustomNavbar />
+        <Routes>
+          <Route path="/" element={<Gallery />} />
+          <Route path="/article/:articleId" element={<Article />} />
+
+          {/* path for the main route = ofc "/" */}
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 
